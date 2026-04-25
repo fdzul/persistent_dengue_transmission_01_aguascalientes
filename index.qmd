@@ -96,11 +96,15 @@ theme: custom.scss
 ```
 ::::::::::::::::::::: responsive-grid
 
-<!-- COLUMNA 1: Distribución de Casos --><div class="columna"><div class="column-header"> 📊 DISTRIBUCIÓN DE CASOS POR SEMANA EPIDEMIOLÓGICA </div><!--
+<!-- COLUMNA 1: Distribución de Casos -->
+
+<div class="columna"><div class="column-header"> 📊 DISTRIBUCIÓN DE CASOS POR SEMANA EPIDEMIOLÓGICA</div> <!--
 
 <!-- MAPA 3 (Fila 1, columna 1 - Casos) -->
+
 ::: grid-card
 2023-2025
+
 ```{r echo=FALSE}
 load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
 source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_transmission_chains.R")
@@ -114,7 +118,6 @@ mp_dengue_cases(data = xy,
                 cve_edo = "01")
 ```
 :::
-
 
 <!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
 ::: grid-card
@@ -151,7 +154,6 @@ mp_dengue_cases(data = xy,
 ```
 
 :::
-
 
 <!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
 ::: grid-card
@@ -190,7 +192,7 @@ mp_dengue_cases(data = xy,
 :::
 
 
-</div><!-- COLUMNA 2: Cadenas de Transmisión --><div class="columna"><div class="column-header"> 🔄 CADENAS DE TRANSMISIÓN DE DENGUE </div>
+</div><div class="columna"><div class="column-header"> 🔄 CADENAS DE TRANSMISIÓN DE DENGUE </div>
 
 <!-- MAPA 3 (Fila 1, columna 1 - Casos) -->
 ::: grid-card
@@ -292,6 +294,299 @@ mp_transmission_chains(data = xy,
 :::::::::::::::::::::
 
 :::
+
+
+
+# [**Mapas de Calor**]{style="font-size:2pt"}
+
+::: panel-tabset
+
+### [**Aguascalientes**]{style="color:#990000"}
+
+```{=html}
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Contenedor principal con scroll - DOS COLUMNAS */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* DOS COLUMNAS iguales */
+  gap: 25px;
+  margin: 20px 0;
+  max-height: 85vh;          /* Altura máxima para scroll */
+  overflow-y: auto;          /* Scroll vertical */
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #fafafa;
+  align-items: start;
+}
+
+/* Cada columna es un contenedor flexible que apila sus elementos */
+.columna {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Título de columna */
+.column-header {
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  padding: 8px;
+  background-color: #772953;
+  color: white;
+  border-radius: 6px;
+  margin: 0;
+}
+
+/* Estilo para cada tarjeta de mapa */
+.grid-card2 {
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 12px;
+  background: white;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.grid-card2:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* Asegura que los mapas tengan tamaño consistente */
+.grid-card2 .html-widget,
+.grid-card2 iframe {
+  width: 100% !important;
+  height: 400px !important;
+  border-radius: 8px;
+}
+
+/* Responsive: en móviles, una sola columna */
+@media (max-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: 1fr;  /* Una columna en móvil */
+    max-height: 70vh;
+    gap: 15px;
+    padding: 10px;
+  }
+  .column-header {
+    font-size: 1rem;
+  }
+  .grid-card2 .html-widget,
+  .grid-card2 iframe {
+    height: 300px !important;
+  }
+}
+</style>
+```
+::::::::::::::::::::: responsive-grid
+
+<!-- COLUMNA 1: Distribución de Casos -->
+
+<div class="columna"><div class="column-header"> 📊 DISTRIBUCIÓN DE CASOS POR SEMANA EPIDEMIOLÓGICA </div> <!--
+
+<!-- MAPA 3 (Fila 1, columna 1 - Casos) -->
+
+::: grid-card2
+
+2023-2025
+```{r echo=FALSE}
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_transmission_chains.R")
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_dengue_cases.R")
+library(mapgl)
+library(fishualize)
+library(sf)
+mp_dengue_cases(data = xy,
+                yrs = c(2023:2025),
+                locality = "Aguascalientes",
+                cve_edo = "01")
+```
+:::
+
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card2
+
+2025
+```{r echo=FALSE}
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_transmission_chains.R")
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_dengue_cases.R")
+library(mapgl)
+library(fishualize)
+library(sf)
+mp_dengue_cases(data = xy,
+                yrs = c(2025),
+                locality = "Aguascalientes",
+                cve_edo = "01")
+```
+
+:::
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card2
+2024
+```{r echo=FALSE}
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_transmission_chains.R")
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_dengue_cases.R")
+library(mapgl)
+library(fishualize)
+library(sf)
+mp_dengue_cases(data = xy,
+                yrs = 2024,
+                locality = "Aguascalientes",
+                cve_edo = "01")
+```
+
+:::
+
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card2
+2023
+```{r echo=FALSE}
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_transmission_chains.R")
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_dengue_cases.R")
+library(mapgl)
+library(fishualize)
+library(sf)
+mp_dengue_cases(data = xy,
+                yrs = 2023,
+                locality = "Aguascalientes",
+                cve_edo = "01")
+```
+
+:::
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card2
+2016-2022
+```{r echo=FALSE}
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_transmission_chains.R")
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_dengue_cases.R")
+library(mapgl)
+library(fishualize)
+library(sf)
+mp_dengue_cases(data = xy,
+                yrs = c(2016:2022),
+                locality = "Aguascalientes",
+                cve_edo = "01")
+```
+
+:::
+
+
+</div><!-- COLUMNA 2: Cadenas de Transmisión --><div class="columna"><div class="column-header"> 🔄 MAPAS DE CALOR </div>
+
+<!-- MAPA 3 (Fila 1, columna 1 - Casos) -->
+::: grid-card2
+2023-2025
+```{r echo=FALSE}
+# Step 1. load the dataset ####
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+
+# Step 2. load the function ####
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_heatmap.R")
+library(sf)
+library(mapgl)
+mp_heatmap(geocoded_dataset = xy,
+           yrs = c(2023:2025),
+           cve_edo = "01",
+           locality = "Aguascalientes")
+```
+:::
+
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card2
+2025
+```{r echo=FALSE}
+# Step 1. load the dataset ####
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+
+# Step 2. load the function ####
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_heatmap.R")
+library(sf)
+library(mapgl)
+mp_heatmap(geocoded_dataset = xy,
+           yrs = 2025,
+           cve_edo = "01",
+           locality = "Aguascalientes")
+```
+
+:::
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card2
+2024
+```{r echo=FALSE}
+# Step 1. load the dataset ####
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+
+# Step 2. load the function ####
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_heatmap.R")
+library(sf)
+library(mapgl)
+mp_heatmap(geocoded_dataset = xy,
+           yrs = 2024,
+           cve_edo = "01",
+           locality = "Aguascalientes")
+```
+
+:::
+
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card2
+2023
+```{r echo=FALSE}
+# Step 1. load the dataset ####
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+
+# Step 2. load the function ####
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_heatmap.R")
+library(sf)
+library(mapgl)
+mp_heatmap(geocoded_dataset = xy,
+           yrs = 2023,
+           cve_edo = "01",
+           locality = "Aguascalientes")
+```
+
+:::
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card2
+2016-2022
+```{r echo=FALSE}
+# Step 1. load the dataset ####
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+
+# Step 2. load the function ####
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_heatmap.R")
+library(sf)
+library(mapgl)
+mp_heatmap(geocoded_dataset = xy,
+           yrs = c(2016:2022),
+           cve_edo = "01",
+           locality = "Aguascalientes")
+```
+:::
+
+</div>
+:::::::::::::::::::::
+
+:::
+
 
 
 # [**Hotspots de Vector**]{style="font-size:2pt"}
