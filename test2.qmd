@@ -1,5 +1,5 @@
 ---
-title: "Programa de Prevención y Control de Arbovirosis | 2026 | Baja California"
+title: "Programa de Prevención y Control de Arbovirosis | 2026 | Aguascalientes"
 format: 
   dashboard:
     nav-buttons: [twitter, github, facebook]
@@ -19,10 +19,10 @@ theme: custom.scss
   box-sizing: border-box;
 }
 
-/* Contenedor principal con scroll - DOS COLUMNAS */
+/* Contenedor principal con scroll - tres COLUMNAS */
 .responsive-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;  /* DOS COLUMNAS iguales */
+  grid-template-columns: 1fr 1fr 1fr;  /* Tres COLUMNAS iguales */
   gap: 25px;
   margin: 20px 0;
   max-height: 85vh;          /* Altura máxima para scroll */
@@ -287,6 +287,105 @@ mp_transmission_chains(data = xy,
 ```
 
 :::
+
+</div><!-- COLUMNA 2: Cadenas de Transmisión --><div class="columna"><div class="column-header"> 🔄 MAPAS DE CALOR </div>
+
+<!-- MAPA 3 (Fila 1, columna 1 - Casos) -->
+::: grid-card
+2023-2025
+```{r echo=FALSE}
+# Step 1. load the dataset ####
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+
+# Step 2. load the function ####
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_heatmap.R")
+library(sf)
+library(mapgl)
+mp_heatmap(geocoded_dataset = xy,
+           yrs = c(2023:2025),
+           cve_edo = "01",
+           locality = "Aguascalientes")
+```
+:::
+
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card
+2025
+```{r echo=FALSE}
+# Step 1. load the dataset ####
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+
+# Step 2. load the function ####
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_heatmap.R")
+library(sf)
+library(mapgl)
+mp_heatmap(geocoded_dataset = xy,
+           yrs = 2025,
+           cve_edo = "01",
+           locality = "Aguascalientes")
+```
+
+:::
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card
+2024
+```{r echo=FALSE}
+# Step 1. load the dataset ####
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+
+# Step 2. load the function ####
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_heatmap.R")
+library(sf)
+library(mapgl)
+mp_heatmap(geocoded_dataset = xy,
+           yrs = 2024,
+           cve_edo = "01",
+           locality = "Aguascalientes")
+```
+
+:::
+
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card
+2023
+```{r echo=FALSE}
+# Step 1. load the dataset ####
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+
+# Step 2. load the function ####
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_heatmap.R")
+library(sf)
+library(mapgl)
+mp_heatmap(geocoded_dataset = xy,
+           yrs = 2023,
+           cve_edo = "01",
+           locality = "Aguascalientes")
+```
+
+:::
+
+<!-- MAPA 4 (Fila 2, col = 2 - Casos) -->
+::: grid-card
+2016-2022
+```{r echo=FALSE}
+# Step 1. load the dataset ####
+load("~/Library/CloudStorage/Dropbox/hotspots_2025/8.RData/denmex_chains.RData")
+
+# Step 2. load the function ####
+source("~/Library/CloudStorage/Dropbox/r_developments/r_dashboards/netlify/1.2.persisten_dengue_transmission_2026/persistent_dengue_transmission_01_aguascalientes/mp_heatmap.R")
+library(sf)
+library(mapgl)
+mp_heatmap(geocoded_dataset = xy,
+           yrs = c(2016:2022),
+           cve_edo = "01",
+           locality = "Aguascalientes")
+```
+:::
+
+
 
 </div>
 :::::::::::::::::::::
