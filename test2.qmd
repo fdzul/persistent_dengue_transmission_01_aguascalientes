@@ -294,33 +294,3 @@ mp_transmission_chains(data = xy,
 :::
 
 
-# [**Hotspots de Vector**]{style="font-size:2pt"}
-
-::: panel-tabset
-### [**Aguascalientes**]{style="color:#990000"}
-
-```{r vector_aguascalientes, dpi = 300, warning=FALSE, message=FALSE}
-deneggs::map_eggs_hotspots(betas = denmex::eggs_betas_01_aguascalientes,
-                           locality = "Aguascalientes",
-                           cve_edo = "01",
-                           palette = rcartocolor::carto_pal,
-                           name = "SunsetDark",
-                           static_map = FALSE)
-```
-
-### [**Calvillo**]{style="color:#990000"}
-
-```{r vector_calvillo, dpi = 300, warning=FALSE, message=FALSE}
-deneggs::map_eggs_hotspots(betas = denmex::eggs_betas_01_aguascalientes,
-                           locality = "Calvillo",
-                           cve_edo = "01",
-                           palette = rcartocolor::carto_pal,
-                           name = "SunsetDark",
-                           static_map = FALSE)
-```
-:::
-
-# [**Escenarios Epidemiológicos**]{style="font-size:2pt"}
-
-::: panel-tabset
-:::
